@@ -24,12 +24,15 @@ export default {
     }
   },
   mounted() {
-    // alert(this.$route.query.roomID)
+    if (this.$route.query.roomID == localStorage.getItem("roomID")) {
+      this.$router.push({ name: 'getcard', query: { act:"getcard", roomID : localStorage.getItem("roomID"), playerID : localStorage.getItem("playerID")} })
+    }
   },
   methods: {
     create() {
       this.$http.get("https://whoisspy.herokuapp.com/addPlayer/"+ this.$route.query.roomID+ "/"+ this.name).then((res) =>{
-        console.log(res)
+        localStorage.setItem("roomID", this.$route.query.roomID)
+        localStorage.setItem("playerID", res.data.PlayerID)
         this.$router.push({ name: 'getcard', query: { act:"getcard", roomID : this.$route.query.roomID, playerID : res.data.PlayerID} })
       },function(res) {
         this.msg = res.body
