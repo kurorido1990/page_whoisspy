@@ -36,15 +36,6 @@ export default new Router({
       path: '/page_whoisspy/newroom',
       name: 'newroom',
       component: newroom,
-      beforeEnter: (to, from, next) => {
-        if (sessionStorage.getItem('redirect') !== null) {
-          const redirect = sessionStorage.redirect
-          delete sessionStorage.redirect
-          next(redirect)
-        } else {
-          next()
-        }
-      },
     },
     {
       path: '/page_whoisspy/newplayer',
