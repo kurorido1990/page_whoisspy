@@ -26,25 +26,25 @@ Vue.use(VueResource)
 
 export default new Router({
   mode:"history",
-  beforeEnter: (to, from, next) => {
-    if (sessionStorage.getItem('redirect') !== null) {
-      const redirect = sessionStorage.redirect
-      delete sessionStorage.redirect
-      next(redirect)
-    } else {
-      next()
-    }
-  },
   routes: [
     {
       path: '/page_whoisspy',
       name: 'home',
-      component: home
+      component: home,
     },
     {
       path: '/page_whoisspy/newroom',
       name: 'newroom',
-      component: newroom
+      component: newroom,
+      beforeEnter: (to, from, next) => {
+        if (sessionStorage.getItem('redirect') !== null) {
+          const redirect = sessionStorage.redirect
+          delete sessionStorage.redirect
+          next(redirect)
+        } else {
+          next()
+        }
+      },
     },
     {
       path: '/page_whoisspy/newplayer',
