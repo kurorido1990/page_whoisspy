@@ -12,9 +12,12 @@
 
         sessionStorage.redirect = '/' + location.pathname.slice(1).split('/').slice(segment).join('/')
 
-        // location.replace(
-        //     location.pathname.split('/').slice(0, 1 + segment).join('/')
-        // )
+        console.log(location.pathname)
+        console.log(sessionStorage.redirect)
+
+        location.replace(
+            location.pathname.split('/').slice(0, 1 + segment).join('/')
+        )
     </script>
 </head>
 </html>
