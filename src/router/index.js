@@ -33,17 +33,17 @@ export default new Router({
       component: home
     },
     {
-      path: '/page_whoisspy/newroom',
+      path: '/newroom',
       name: 'newroom',
       component: newroom
     },
     {
-      path: '/page_whoisspy/newplayer',
+      path: '/newplayer',
       name: 'newplayer',
       component: newplayer
     },
     {
-      path: '/page_whoisspy/getcard',
+      path: '/getcard',
       name: 'getcard',
       component: getcard
     },
