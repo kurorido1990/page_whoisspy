@@ -7,11 +7,10 @@
           <b-icon @click="create" icon="arrow-return-left"></b-icon>
         </b-input-group-prepend>
       </b-input-group>
-
+      <div style="font-size: 12pt;width: 180pt;margin-left: 11px;"><a :href="addPlayer">{{addPlayer}}</a></div>
+      <div style="font-size: 12pt;width: 180pt;margin-left: 11px;"><a :href="monitorRoom">{{monitorRoom}}</a></div>
       
     </b-container>
-    <div style="font-size: 12pt;width: 180pt;margin-left: 11px;"><a :href="addPlayer">{{addPlayer}}</a></div>
-    <div style="font-size: 12pt;width: 180pt;margin-left: 11px;"><a :href="monitorRoom">{{monitorRoom}}</a></div>
   </div>
 </template>
 
