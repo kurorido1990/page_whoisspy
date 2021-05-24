@@ -22,6 +22,7 @@ export default {
       text: '',
       addPlayer: '',
       monitorRoom:'',
+      resetRoom:'',
     }
   },
    // e.g. <div ref="text">
@@ -32,6 +33,7 @@ export default {
          var tmpData = res.data
          this.addPlayer = "https://kurorido1990.github.io/page_whoisspy?act=newplayer&roomID=" + tmpData.roomID
          this.monitorRoom = "https://kurorido1990.github.io/page_whoisspy/room?roomID=" + tmpData.roomID
+         this.resetRoom = "https://whoisspy.herokuapp.com/resetRoom/" + tmpData.roomID
         // this.addPlayer = "http://localhost:8081/newplayer?roomID=" + tmpData.roomID
         //  this.monitorRoom = "http://localhost:8081/room?roomID=" + tmpData.roomID
       })
