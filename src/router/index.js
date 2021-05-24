@@ -34,7 +34,7 @@ export default new Router({
     },
     {
       path: '/page_whoisspy/newroom/',
-      name: '/page_whoisspy/newroom',
+      name: 'newroom',
       component: newroom
     },
     {
