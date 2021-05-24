@@ -17,7 +17,7 @@
 <script>
 export default {
   name: 'Home',
-  computed() {
+  mounted() {
     console.log(this.$route.query.act)
     if (this.$route.query.act == "addplayer") {
       this.$router.push({name: 'addplayer', query: {act :"addplayer", roomID :this.$route.query.roomID}})
