@@ -29,27 +29,27 @@ export default new Router({
   mode:"history",
   routes: [
     {
-      path: '/',
+      path: '/page_whoisspy/',
       name: 'home',
       component: home
     },
     {
-      path: '/topic',
+      path: '/page_whoisspy/topic',
       name: 'topic',
       component: topic
     },
     {
-      path: '/newroom',
+      path: '/page_whoisspy/newroom',
       name: 'newroom',
       component: newroom
     },
     {
-      path: '/newplayer',
+      path: '/page_whoisspy/newplayer',
       name: 'newplayer',
       component: newplayer
     },
     {
-      path: '/getcard',
+      path: '/page_whoisspy/getcard',
       name: 'getcard',
       component: getcard
     },
