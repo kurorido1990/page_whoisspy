@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <b-container style="margin-top: 10pt;width: 500pt;text-align: center;">
+    <b-container style="margin-top: 50pt;width: 500pt;text-align: center;">
       <div class="centered-wrap">
         <div class="card-wrap">
           <div class="card" ref='card' @click="rotateCard()">

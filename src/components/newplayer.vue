@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <b-container style="margin-top: 10pt;width: 200pt;text-align: center;">
+    <b-container style="margin-top: 55pt;width: 200pt;text-align: center;">
       <b-input-group size="sm" class="mb-2">
         <b-form-input v-model="name" @keyup.enter="create" placeholder="請輸入 暱稱" ref="createInput"></b-form-input>
         <b-input-group-prepend is-text>
