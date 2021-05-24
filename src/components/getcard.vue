@@ -100,6 +100,14 @@ export default {
   color:#333;
   font-size:1.5rem;
   transform:rotateY(180deg);
+  -webkit-backface-visibility: hidden;  
+-moz-backface-visibility: hidden;  
+-ms-backface-visibility: hidden; 
+backface-visibility: hidden;  
+-webkit-perspective: 1000;  
+-moz-perspective: 1000;  
+-ms-perspective: 1000;  
+perspective: 1000; 
 }
 
 .card-front span{
@@ -137,13 +145,6 @@ export default {
   background:url("https://preview.ibb.co/bF05wV/danask.png") center top repeat;
   font-size:1.5rem;
   
-}
-
-.card-back span:nth-of-type(1){
-  display:block;
-  position:absolute;
-  top:42%;
-  left:32%;
 }
 
 .tran {  
