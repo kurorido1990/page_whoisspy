@@ -17,9 +17,22 @@
 <script>
 export default {
   name: 'Home',
+  computed() {
+    if (this.$route.query.act == "addPlayer") {
+      this.$router.push({name: 'addplayer', query: {ack :"addplayer", roomID :this.$route.query.roomID}})
+    }
+
+    if (this.$route.query.act == "getcard") {
+      this.$router.push({name: 'getcard', query: {ack:"getcard",roomID :this.$route.query.roomID, playerID: this.$route.query.playerID}})
+    }
+
+    if (this.$route.query.act == "newroom") {
+      this.$router.push({name: 'newroom', query:{ack:"newroom"}})
+    }
+  },
   methods: {
      newRoom() {
-      this.$router.push({ name: 'newroom' })
+      this.$router.push({ name: 'newroom', query:{ack:"newroom"} })
     },
   }
 }

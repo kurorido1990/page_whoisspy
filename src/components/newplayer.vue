@@ -30,7 +30,7 @@ export default {
     create() {
       this.$http.get("https://whoisspy.herokuapp.com/addPlayer/"+ this.$route.query.roomID+ "/"+ this.name).then((res) =>{
         console.log(res)
-        this.$router.push({ name: 'getcard', query: { roomID : this.$route.query.roomID, playerID : res.data.PlayerID} })
+        this.$router.push({ name: 'getcard', query: { ack:"getcard", roomID : this.$route.query.roomID, playerID : res.data.PlayerID} })
       },function(res) {
         this.msg = res.body
       })
