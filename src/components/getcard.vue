@@ -38,11 +38,7 @@ export default {
   methods: {
     rotateCard() {
       this.$refs.card.style.transform = `rotateY(${this.cardRotate}deg)`
-      if (this.cardRotate == 180) {
-          this.cardRotate = 0
-      } else {
-        this.cardRotate = 180
-      }
+      this.cardRotate+=180
     },
     getCard() {
       this.$http.get("https://whoisspy.herokuapp.com/getCard/"+ this.$route.query.roomID+ "/"+ this.$route.query.playerID).then((res) =>{
@@ -100,14 +96,15 @@ export default {
   color:#333;
   font-size:1.5rem;
   transform:rotateY(180deg);
+
   -webkit-backface-visibility: hidden;  
--moz-backface-visibility: hidden;  
--ms-backface-visibility: hidden; 
-backface-visibility: hidden;  
--webkit-perspective: 1000;  
--moz-perspective: 1000;  
--ms-perspective: 1000;  
-perspective: 1000; 
+  -moz-backface-visibility: hidden;  
+  -ms-backface-visibility: hidden; 
+  backface-visibility: hidden;  
+  -webkit-perspective: 1000;  
+  -moz-perspective: 1000;  
+  -ms-perspective: 1000;  
+  perspective: 1000; 
 }
 
 .card-front span{
