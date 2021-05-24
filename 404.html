@@ -10,7 +10,9 @@
         // ========================================
         const segment = 1
 
-        sessionStorage.redirect = '/' + location.pathname.slice(1).split('/').slice(segment).join('/')
+        // sessionStorage.redirect = '/' + location.pathname.slice(1).split('/').slice(segment).join('/')
+
+        sessionStorage.redirect = location.pathname
 
         console.log(location.pathname)
         console.log(sessionStorage.redirect)
