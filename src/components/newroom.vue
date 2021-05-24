@@ -7,8 +7,9 @@
           <b-icon @click="create" icon="arrow-return-left"></b-icon>
         </b-input-group-prepend>
       </b-input-group>
-      <div style="font-size: 12pt;width: 150pt;"><a :href="addPlayer">{{addPlayer}}</a></div>
-      <div style="font-size: 12pt;width: 150pt;"><a :href="monitorRoom">{{monitorRoom}}</a></div>
+      <div style="font-size: 12pt;width: 150pt;"><a :href="addPlayer">{{addPlayer}}</a></div><br/>
+      <div style="font-size: 12pt;width: 150pt;"><a :href="monitorRoom">{{monitorRoom}}</a></div><br/>
+      <div style="font-size: 12pt;width: 150pt;"><a :href="monitorRoom">{{resetRoom}}</a></div>
       
     </b-container>
   </div>
