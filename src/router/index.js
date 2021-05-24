@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import VueResource from 'vue-resource'
 import home from '@/components/home'
-import topic from '@/components/topic'
 import newroom from '@/components/newroom'
 import newplayer from '@/components/newplayer'
 import getcard from '@/components/getcard'
@@ -32,11 +31,6 @@ export default new Router({
       path: '/page_whoisspy/',
       name: 'home',
       component: home
-    },
-    {
-      path: '/page_whoisspy/topic',
-      name: 'topic',
-      component: topic
     },
     {
       path: '/page_whoisspy/newroom',
