@@ -1,8 +1,8 @@
 module.exports = {
-    publicPath: '/',
-    // publicPath: process.env.NODE_ENV === 'production'
-    // ? '/page_whoisspy/'
-    // : '/',
+    // publicPath: '/',
+    publicPath: process.env.NODE_ENV === 'production'
+    ? '/page_whoisspy/'
+    : '/',
     outputDir: 'dist',
     lintOnSave: process.env.NODE_ENV === 'development',
     productionSourceMap: false,
