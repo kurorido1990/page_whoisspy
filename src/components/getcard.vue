@@ -4,10 +4,10 @@
       <div class="centered-wrap">
         <div class="card-wrap">
           <div class="card" ref='card' @click="rotateCard()">
-            <div class="card-front">  
+            <div class="card-back">  
               </div>
-            <div class="card-back">
-              <span style="">{{topic}}</span>
+            <div class="card-front">
+              <span>{{topic}}</span>
             </div>
           </div>
   </div>
@@ -93,21 +93,20 @@ export default {
 .card-front{
   border-radius:5px;
   position:absolute;
-  background:#e8e8e8;
   width:100%;
   height:100%;
   /*hide backface*/
   backface-visibility:hidden;
   color:#333;
-  background:url("https://preview.ibb.co/bF05wV/danask.png") center top repeat;
   font-size:1.5rem;
+  transform:rotateY(180deg);
 }
 
-.card-front span:nth-of-type(1){
+.card-front span{
   display:block;
   position:absolute;
-  top:5%;
-  left:5%;
+  top:42%;
+  left:32%;
 }
 
 .card-front img{
@@ -127,15 +126,17 @@ export default {
 
 /*back card*/
 .card-back{
-  border-radius:5px;
+   border-radius:5px;
   position:absolute;
+  background:#e8e8e8;
   width:100%;
   height:100%;
   /*hide backface*/
   backface-visibility:hidden;
   color:#333;
+  background:url("https://preview.ibb.co/bF05wV/danask.png") center top repeat;
   font-size:1.5rem;
-  transform:rotateY(180deg);
+  
 }
 
 .card-back span:nth-of-type(1){
@@ -144,4 +145,14 @@ export default {
   top:42%;
   left:32%;
 }
+
+.tran {  
+-webkit-backface-visibility: hidden;  
+-moz-backface-visibility: hidden;  
+-ms-backface-visibility: hidden; 
+backface-visibility: hidden;  
+-webkit-perspective: 1000;  
+-moz-perspective: 1000;  
+-ms-perspective: 1000;  
+perspective: 1000;   /* Other transform properties here */}
 </style>
