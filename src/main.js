@@ -29,5 +29,5 @@ new Vue({
         delete sessionStorage.redirect
         this.$router.push(redirect)
     }
-}
+},
 }).$mount('#app');

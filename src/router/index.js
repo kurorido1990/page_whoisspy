@@ -26,6 +26,15 @@ Vue.use(VueResource)
 
 export default new Router({
   mode:"history",
+  beforeEnter: (to, from, next) => {
+    if (sessionStorage.getItem('redirect') !== null) {
+      const redirect = sessionStorage.redirect
+      delete sessionStorage.redirect
+      next(redirect)
+    } else {
+      next()
+    }
+  },
   routes: [
     {
       path: '/page_whoisspy',
