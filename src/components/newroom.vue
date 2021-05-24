@@ -30,7 +30,7 @@ export default {
     create() {
       this.$http.get("https://whoisspy.herokuapp.com/createRoom/"+ this.text).then((res) =>{
          var tmpData = res.data
-         this.addPlayer = "https://kurorido1990.github.io/page_whoisspy?act=addplayer&roomID=" + tmpData.roomID
+         this.addPlayer = "https://kurorido1990.github.io/page_whoisspy?act=newplayer&roomID=" + tmpData.roomID
          this.monitorRoom = "https://kurorido1990.github.io/page_whoisspy/room?roomID=" + tmpData.roomID
         // this.addPlayer = "http://localhost:8081/newplayer?roomID=" + tmpData.roomID
         //  this.monitorRoom = "http://localhost:8081/room?roomID=" + tmpData.roomID
