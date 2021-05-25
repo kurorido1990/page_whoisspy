@@ -120,9 +120,9 @@ export default {
         this.show = true
         console.log(this.voteList)
     },
-    votePlayer(playerID, name) {
+    votePlayer(voteID, name) {
       if (confirm("確定要投 "+name+" ？")) {
-        this.$http.get("https://whoisspy.herokuapp.com/vote/"+ this.$route.query.roomID+ "/"+ this.$route.query.playerID+"/"+playerID).then((res) => {
+        this.$http.get("https://whoisspy.herokuapp.com/vote/"+ this.$route.query.roomID+ "/"+ this.$route.query.playerID+"/"+voteID).then((res) => {
         // this.$http.get("/api/vote/"+ this.$route.query.roomID+ "/"+ this.$route.query.playerID+"/"+playerID).then((res) => {
           console.log(res)
           this.show = false
