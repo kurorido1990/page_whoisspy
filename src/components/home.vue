@@ -9,7 +9,8 @@
     <p>活著的平民小於等於2時，臥底勝利。</p>
   </b-jumbotron>
   <div>
-  <b-button @click="newRoom">建立房間</b-button>
+  <b-button @click="newRoom">建立房間</b-button>&nbsp;&nbsp;&nbsp;&nbsp;
+  <b-button @click="monitor" variant="danger">監控房間</b-button>
 </div>
 </div>
 </template>
@@ -30,10 +31,17 @@ export default {
     if (this.$route.query.act == "newroom") {
       this.$router.push({name: 'newroom', query:{act:"newroom"}})
     }
+
+    if (this.$route.query.act == "monitor") {
+      this.$router.push({name: 'monitor', query:{act:"monitor"}})
+    }
   },
   methods: {
      newRoom() {
       this.$router.push({ name: 'newroom', query:{act:"newroom"} })
+    },
+     monitor() {
+      this.$router.push({ name: 'monitor', query:{act:"monitor"} })
     },
   }
 }

@@ -5,6 +5,7 @@ import home from '@/components/home'
 import newroom from '@/components/newroom'
 import newplayer from '@/components/newplayer'
 import getcard from '@/components/getcard'
+import monitor from '@/components/monitor'
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 // Import Bootstrap an BootstrapVue CSS files (order is important)
@@ -46,6 +47,11 @@ export default new Router({
       path: '/page_whoisspy/getcard',
       name: 'getcard',
       component: getcard
+    },
+    {
+      path: '/page_whoisspy/monitor',
+      name: 'monitor',
+      component: monitor
     },
   ]
 })

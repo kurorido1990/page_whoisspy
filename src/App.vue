@@ -12,7 +12,7 @@ export default {
   name: 'App',
   methods: {
     back () {
-      this.$router.push({ name: 'home' })
+      // this.$router.push({ name: 'home' })
     }
   }
 }
