@@ -7,7 +7,7 @@
             <div class="card-back">  
               </div>
             <div class="card-front">
-              <span style="scale(1) rotateY(0deg) translate3d(0, 0, 0)">{{topic}}</span>
+              <span>{{topic}}</span>
             </div>
           </div>
   </div>
