@@ -6,9 +6,10 @@
   <div class="accordion" role="tablist" style="margin-top:30px">
     <b-card v-for="(items, index) in roomList" no-body class="mb-1" :key="index">
       <b-card-header header-tag="header" class="p-1" role="tab">
-        <b-button block v-b-toggle="index" variant="success"  style="margin:5px"> {{ index }}</b-button>
+        <b-button block v-b-toggle="index" variant="success"  style="margin:5px"> RoomID {{ index }}</b-button>
         <input type="text" style="display:none" :id="index+'_link'" :value="'https://kurorido1990.github.io/page_whoisspy?act=newplayer&roomID='+index" />
         <b-button block @click="copyCode(index)"  style="margin:5px"> 取得遊戲連結</b-button>
+        <b-button block @click="startGambling(index)" variant="warning"  style="margin:5px"> 開始投票</b-button>
         <b-button block variant="danger"  @click="resetGame(index)"  style="margin:5px"> 重置遊戲</b-button>
       </b-card-header>
       <b-collapse :id="index" accordion="my-accordion" role="tabpanel">
@@ -112,6 +113,11 @@ export default {
   methods: {
     back () {
       this.$router.push({ name: 'home' })
+    },
+    startGambling(id) {
+      this.$http.get("/api/startVote/" + id).then((res) => {
+        console.log(res)
+      })
     },
     resetGame(id) {
       this.$http.get("https://whoisspy.herokuapp.com/resetRoom/" + id).then((res) => {

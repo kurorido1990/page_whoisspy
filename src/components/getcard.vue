@@ -1,5 +1,21 @@
 <template>
   <div class="hello">
+<b-overlay no-center :show="show" rounded="sm">
+  <template #overlay>
+        <div class="text-center" style="height: 1000pt;
+    background-color: black;
+    opacity: .92;
+    margin-top: -400pt;">
+    <div style="background-color: white;
+    padding-top: 100pt;
+    height: 800pt;">
+      <h1> 投票囉 </h1>
+      <div v-for="(vname, vindex) in voteList" :key="vindex">
+      <b-button size="lg" variant="info" style="margin:5pt" @click="votePlayer(vindex,vname)">{{vname}}</b-button>
+      </div>
+    </div>   
+        </div>
+      </template>
     <b-container style="margin-top: 50pt;width: 500pt;text-align: center;">
       <div class="centered-wrap">
         <div class="card-wrap">
@@ -8,12 +24,13 @@
               </div>
             <div class="card-front">
               <span>{{topic}}</span>
+              <img v-if="dead" src="../assets/dead.jpg" style="width:176px;left:5%">
             </div>
           </div>
-  </div>
-</div>
-<div></div>
+      </div>
+    </div>
     </b-container>
+    </b-overlay>
   </div>
 </template>
 
@@ -25,26 +42,103 @@ export default {
       name: '',
       msg:'',
       topic:'',
+      dead: false,
       cardRotate: 180,
+      show:false,
+      voteList:{},
+      socket:"",
     }
   },
   mounted() {
     this.getCard()
     // setInterval(() => {
-    //   // this.$router.go(0)
-    //   this.getCard()
+      // // this.$router.go(0)
+      // // this.getCard()
+      // if (this.show) {
+      //   this.show = false
+      // } else {
+      //   this.show = true
+      // }
     // }, 5000)
+    this.connection()
+   
   },
   methods: {
+    connection() {
+      this.socket = new WebSocket("wss://whoisspy.herokuapp.com/ws/"+ this.$route.query.roomID+ "/"+ this.$route.query.playerID)
+      this.socket.onmessage = this.onmessage
+    },
+    onmessage(e) {
+        console.log(e.data)
+        var socketData = JSON.parse(e.data)
+        console.log(socketData.Data)
+        if (socketData.Cmd == "reset") {
+          alert("遊戲重置了");
+          this.getCard()
+          return
+        }
+        
+        if (socketData.Cmd == "startGambling") {
+          this.refreshVoteList(socketData.Data)
+          return
+        }
+
+        if (socketData.Cmd == "kickPlayer") {
+          this.kickPlayer(socketData.Data)
+          return
+        }
+
+        if (socketData.Cmd == "settlement") {
+          this.settlement(socketData.Data)
+          return
+        }
+    },
+    settlement(winner) {
+      if (winner == 1) {
+        alert("間諜獲勝！！！")
+        this.getCard()
+      }
+
+      if (winner == 2) {
+        alert("平民獲勝！！！")
+        this.getCard()
+      }
+    },
+    kickPlayer(playerName) {
+      alert(playerName + "被殺了")
+      this.getCard()
+    },
+    refreshVoteList(votelist) {
+      var pList = {}
+        votelist.forEach(element => {
+          if (element.ID != this.$route.query.playerID) {
+            pList[element.ID] = element.Name
+          } 
+        });
+
+        this.voteList = pList
+        this.show = true
+        console.log(this.voteList)
+    },
+    votePlayer(playerID, name) {
+      if (confirm("確定要投 "+name+" ？")) {
+        this.$http.get("https://whoisspy.herokuapp.com/vote/"+ this.$route.query.roomID+ "/"+ this.$route.query.playerID+"/"+playerID).then((res) => {
+        // this.$http.get("/api/vote/"+ this.$route.query.roomID+ "/"+ this.$route.query.playerID+"/"+playerID).then((res) => {
+          console.log(res)
+          this.show = false
+        })
+      }
+    },
     rotateCard() {
       this.$refs.card.style.transform = `rotateY(${this.cardRotate}deg)`
       this.cardRotate+=180
     },
     getCard() {
       this.$http.get("https://whoisspy.herokuapp.com/getCard/"+ this.$route.query.roomID+ "/"+ this.$route.query.playerID).then((res) =>{
+      // this.$http.get("/api/getCard/"+ this.$route.query.roomID+ "/"+ this.$route.query.playerID).then((res) =>{
         console.log(res)
         this.topic = res.data.Topic
-
+        this.dead = res.data.Dead
         var room = JSON.parse(res.data.Room)
         console.log(room)
       },function(res) {

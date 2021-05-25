@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <b-button block @click="back"  style="margin:5px"> 回首頁</b-button>
     <b-container style="margin-top: 10pt;width: 230pt;text-align: center;">
       <b-input-group size="sm" class="mb-2">
         <b-form-input v-model="text" @keyup.enter="create" placeholder="請輸入 遊戲人數" ref="createInput"></b-form-input>
@@ -11,7 +12,7 @@
          <input type="text" style="display:none" id="addPlayer" />
          <b-button block variant="success" @click="copyCode('addPlayer')" style="margin:5px"> 開始遊戲 </b-button> <br />
          <input type="text" style="display:none" id="resetRoom" />
-         <b-button block variant="danger" @click="copyCode('resetRoom')" style="margin:5px"> 重置遊戲 </b-button> <br />
+         <!-- <b-button block variant="danger" @click="copyCode('resetRoom')" style="margin:5px"> 重置遊戲 </b-button> <br /> -->
       </div>      
     </b-container>
   </div>
@@ -31,6 +32,9 @@ export default {
    // e.g. <div ref="text">
 
   methods: {
+    back () {
+      this.$router.push({ name: 'home' })
+    },
      copyCode(id) {
       var copycode = document.getElementById(id);
       copycode.style.display = ""
