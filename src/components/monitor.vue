@@ -130,7 +130,7 @@ export default {
       alert("已複製好。")
     },
     getData () {
-      this.$http.get("https://whoisspy.herokuapp.com/monitor/").then((res) =>{
+      this.$http.get("https://whoisspy.herokuapp.com/monitor").then((res) =>{
         // this.$http.get("/api/monitor").then((res) =>{
           // console.log(res)
         // console.log(JSON.parse(res.data.RoomList));
