@@ -115,7 +115,8 @@ export default {
       this.$router.push({ name: 'home' })
     },
     startGambling(id) {
-      this.$http.get("/api/startVote/" + id).then((res) => {
+      this.$http.get("https://whoisspy.herokuapp.com/startVote/" + id).then((res) => {
+      // this.$http.get("/api/startVote/" + id).then((res) => {
         console.log(res)
       })
     },
